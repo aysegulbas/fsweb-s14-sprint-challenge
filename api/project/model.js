@@ -17,6 +17,6 @@ async function getById(project_id) {
 }
 async function create(model) {
   let [project_id] = await db("projects").insert(model);
-  return create(project_id);
+  return getById(project_id);
 }
 module.exports = { getAll, create, getById };

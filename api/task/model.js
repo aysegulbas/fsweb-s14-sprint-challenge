@@ -2,7 +2,7 @@ const db = require("../../data/dbConfig");
 async function getAll() {
   let allTasks = await db("tasks as t")
     .leftJoin("projects as p", "p.project_id", "t.project_id")
-    .select("t.task_description", "t.task_notes", "t.task_completed");
+    .select("t.*","p.project_name","p.project_description");
   let mapped = allTasks.map((x) => {
     return {
       ...x,
@@ -13,12 +13,12 @@ async function getAll() {
   return mapped;
 }
 async function getById(task_id) {
-  let task = await db("projects").where("project_id", task_id).first();
+  let task = await db("tasks").where("task_id", task_id).first();
   task.task_completed = task.task_completed == 1;
-  return project;
+  return task;
 }
 async function create(model) {
   let [task_id] = await db("tasks").insert(model);
-  return create(task_id);
+  return getById(task_id);
 }
 module.exports = { getAll, create, getById };

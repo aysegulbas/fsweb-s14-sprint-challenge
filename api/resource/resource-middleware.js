@@ -11,7 +11,7 @@ const validateResource = async (req, res, next) => {
       if (isExist) {
         res.status(400).json({ message: "Yeni bir isim giriniz" });
       } else {
-        next(next);
+        next();
       }
     }
   } catch (error) {

@@ -19,6 +19,6 @@ async function getByResourceName(resource_name) {
 }
 async function create(model) {
   let [resource_id] = await db("resources").insert(model);
-  return create(resource_id);
+  return getById(resource_id);
 }
 module.exports = { getAll, create, getById, getByResourceName };
