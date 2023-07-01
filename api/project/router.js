@@ -2,8 +2,8 @@
 const express = require("express");
 const mw = require("./project-middleware");
 const projectModel = require("./model");
-const router = express.Router;
-mw;
+const router = express.Router();
+
 router.get("/", async (req, res, next) => {
   try {
     const allData = await projectModel.getAll();

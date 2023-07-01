@@ -1,7 +1,7 @@
 const express = require("express");
 const mw = require("./resource-middleware");
 const resourceModel = require("./model");
-const router = express.Router;
+const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
     const allData = await resourceModel.getAll();

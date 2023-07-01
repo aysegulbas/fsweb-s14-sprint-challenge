@@ -3,9 +3,10 @@ const taskModel = require("./model");
 const projectModel = require("../project/model");
 const validateTask = (req, res, next) => {
   try {
-    const { task_description, project_id } = req.body;
+    let { task_description, project_id } = req.body;
     if (!task_description || !project_id) {
       res.status(400).json({ message: "Eksik alan var." });
+    } else {
       next();
     }
   } catch (error) {

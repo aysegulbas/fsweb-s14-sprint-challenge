@@ -5,7 +5,7 @@ const validateResource = async (req, res, next) => {
     const { resource_name } = req.body;
     if (!resource_name) {
       res.status(400).json({ message: "Kaynak ismi eksik" });
-      next();
+      
     } else {
       const isExist = await resourceModel.getByResourceName(resource_name);
       if (isExist) {

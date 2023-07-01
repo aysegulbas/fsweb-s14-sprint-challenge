@@ -1,10 +1,10 @@
 const express = require("express");
 const mw = require("./task-middleware");
 const taskModel = require("./model");
-const router = express.Router;
+const router = express.Router();
 router.get("/", async (req, res, next) => {
   try {
-    const allData = await taskModelModel.getAll();
+    const allData = await taskModel.getAll();
     res.json(allData);
   } catch (error) {
     next(error);
